@@ -3,4 +3,27 @@ plugins {
     id 'com.android.application' version '8.0.2' apply false
     id 'com.android.library' version '8.0.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+    id 'maven-publish'
+    id 'java-library'
+    id 'signing'
+}
+publishing {
+    publications {
+        maven(MavenPublication) {
+
+
+            groupId = 'com.sarj33t'
+            artifactId = 'com.sarj33t.myapplication'
+            version = "1.1"
+            from components.java
+
+            pom {
+                description = 'A demo library'
+            }
+        }
+    }
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
