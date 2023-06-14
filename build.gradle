@@ -12,9 +12,9 @@ publishing {
         maven(MavenPublication) {
             from components.java
 
-            groupId = 'com.sarj33t'
-            artifactId = 'com.sarj33t.myapplication'
-            version = "1.1"
+            groupId = 'com.github.sarj33t-prakash'
+            artifactId = 'android-lib'
+            version = "1.5"
 
 
             pom {
