@@ -7,22 +7,30 @@ plugins {
     id 'java'
     id 'signing'
 }
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from components.java
 
-            groupId = 'com.github.sarj33t-prakash'
-            artifactId = 'android-lib'
-            version = "1.5"
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.java
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.github.sarj33t-prakash'
+                artifactId = 'android-lib'
+                version = "3.0"
 
-
-            pom {
-                description = 'A demo library'
+                pom {
+                    description = 'A demo android library'
+                }
             }
+
+
         }
     }
 }
+
+
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
