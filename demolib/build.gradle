@@ -1,6 +1,26 @@
+buildscript {
+    ext.kotlin_version = '1.7.20'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 plugins {
     id 'com.android.library'
     id 'maven-publish'
+    id 'signing'
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -15,6 +35,16 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,11 +58,34 @@ android {
     }
 }
 
-dependencies {
+publishing {
+    publications {
+        // Creates a Maven publication called "release".
+        mavenAar(MavenPublication) {
+            // Applies the component for the release build variant.
+            // You can then customize attributes of the publication as shown below.
+            groupId = 'com.github.sarj33t-prakash'
+            artifactId = 'android-lib'
+            version = "3.0"
+            artifact("/Users/admin/BitBucket/kandarp/MyApplication3/demolib/build/outputs/aar/demolib-release.aar")
 
+            pom {
+                description = 'A demo android library'
+            }
+        }
+
+
+    }
+}
+
+dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
