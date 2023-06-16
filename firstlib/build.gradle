@@ -20,6 +20,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             consumerProguardFiles 'proguard-rules.pro'
+            consumerProguardFiles "consumer-rules.pro"
         }
     }
     compileOptions {
@@ -29,7 +30,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     testImplementation 'junit:junit:4.13.2'
@@ -37,13 +37,20 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+
 publishing {
     publications {
-        mavenAar(MavenPublication) {
+        maven(MavenPublication) {
             groupId = 'com.github.sarj33t-prakash'
             artifactId = 'android-lib'
             version = "3.2"
-            artifacts {""}
+
             pom {
                 description = 'A demo android library'
             }
@@ -53,6 +60,7 @@ publishing {
         mavenLocal()
     }
 }
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
