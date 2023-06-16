@@ -48,7 +48,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.github.sarj33t-prakash'
-            artifactId = 'android-lib'
+            artifactId = 'first-lib'
             version = "3.2"
 
             pom {
