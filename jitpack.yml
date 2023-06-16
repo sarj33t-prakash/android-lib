@@ -4,5 +4,5 @@ jdk:
 before_install:
   - ./scripts/prepareJitpackEnvironment.sh
 install:
-  - FILE="-Dfile=firstlib-release-5.0.aar"
-  - mvn install:install-file $FILE -DgroupId=com.github.sarj33t-prakash -DartifactId=android-lib -Dversion=5.0 -Dpackaging=aar -DgeneratePom=true
+  - FILE="-Dfile=firstlib-release-6.0.aar"
+  - mvn install:install-file $FILE -DgroupId=com.github.sarj33t-prakash -DartifactId=android-lib -Dversion=6.0 -Dpackaging=aar -DgeneratePom=true
