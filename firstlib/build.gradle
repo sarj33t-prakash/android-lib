@@ -64,10 +64,10 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.github.sarj33t-prakash'
-            artifactId = 'android-lib'
+            artifactId = 'first-lib'
             version = "6.1"
             pom {
-                description = 'A demo android library'
+                description = 'A first demo android library'
             }
         }
     }
