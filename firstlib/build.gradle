@@ -65,7 +65,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.github.sarj33t-prakash'
             artifactId = 'android-lib'
-            version = "4.0"
+            version = "5.0"
             //artifact("/Users/admin/BitBucket/kandarp/DemoProject/firstlib/build/outputs/aar/firstlib-release.aar")
             pom {
                 description = 'A demo android library'
